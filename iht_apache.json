@@ -52,6 +52,11 @@
                 "kind" : "string",
                 "identifier" : true
             },
+            "sc_status" : {
+                "kind" : "integer",
+                "foreign-key" : true,
+                "rewriter" : ";SELECT :sc_status || ' (' || (SELECT message FROM http_status_codes WHERE status = :sc_status) || ') '"
+            },
             "sc_bytes" : {
                 "kind" : "integer"
             },
